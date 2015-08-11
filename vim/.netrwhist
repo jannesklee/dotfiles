@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/jklee/fosite/tools'
+let g:netrw_dirhist_2='/home/jklee/schueler-praktikum/FHD'
+let g:netrw_dirhist_3='/home/jklee/.ssh'
+let g:netrw_dirhist_4='/home/jklee/Arbeitsfläche'
+let g:netrw_dirhist_5='/data/jklee/sweby_nograv'
+let g:netrw_dirhist_6='/data/jklee/tests/numtests/limiter_dependence/sweby_grav'
+let g:netrw_dirhist_7='/data/jklee/tests/numtests/limiter_dependence/grav/sweby'
+let g:netrw_dirhist_8='/data/jklee/tests/numtests/epicyclic_motion/epi_data'
