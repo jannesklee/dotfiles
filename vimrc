@@ -11,6 +11,7 @@ set nocompatible                " get easier to use and more user friendly vim d
 set backspace=indent,eol,start  " allow backspacing over everything in insert mode
 set wildmode=longest,list,full  " bash-like expanding
 set wildmenu
+set noesckeys                   " single <Esc> is recognized immediatly
 set smartindent                 " smart indenting
 set shiftwidth=2                " number of spaces for (auto)indent
 set tabstop=2                   " number of spaces a tab counts for
@@ -18,7 +19,7 @@ set expandtab                   " spaces instead of tabbing
 set undofile                    " use an undo-file and give the path where to save
 set undodir=/home/jklee/.vimundo/
 
-" Make trailing whitespace annoyingly highlighted
+" make trailing whitespace annoyingly highlighted
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
                                 " show trailing whitespaces when entering
@@ -29,3 +30,7 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
                                 " show trailing whitespaces when leaving insert mode
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+" latex-suite configurations
+filetype plugin on              " invoke latex-suite when opening .tex-file
+set grepprg=grep\ -nH\ $*       " prevent grep to skip displaying the file name
