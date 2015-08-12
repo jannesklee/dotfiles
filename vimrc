@@ -1,13 +1,32 @@
 " --------------------------------------------------------------------------------------- "
 "             vimrc file                                                                  "
 " --------------------------------------------------------------------------------------- "
+set nocompatible                " be iMproved, required
+filetype off                    " required for vundle
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'   " let Vundle manage Vundle, required
+
+
+" ----------------------- Plugins ------------------------------------------------------- "
+Plugin 'vim-latex/vim-latex'    " plugin for latex environment
+
+" --------------------------------------------------------------------------------------- "
+
+
+" all of your Plugins must be added before the following line
+call vundle#end()               " required
+filetype plugin indent on       " required
+
+
 syntax on                       " enable syntax highlighting
 colorscheme wombat              " colorscheme
 set number                      " numbers at left
 set ruler                       " show cursor line and column in the status line
 set showmatch                   " show matching brackets and change on %
 set magic                       " changes special characters in search patterns (default)
-set nocompatible                " get easier to use and more user friendly vim defaults
 set backspace=indent,eol,start  " allow backspacing over everything in insert mode
 set wildmode=longest,list,full  " bash-like expanding
 set wildmenu
@@ -30,7 +49,3 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
                                 " show trailing whitespaces when leaving insert mode
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
-
-" latex-suite configurations
-filetype plugin on              " invoke latex-suite when opening .tex-file
-set grepprg=grep\ -nH\ $*       " prevent grep to skip displaying the file name
