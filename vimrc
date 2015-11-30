@@ -35,6 +35,7 @@ set smartindent                 " smart indenting
 set shiftwidth=2                " number of spaces for (auto)indent
 set tabstop=2                   " number of spaces a tab counts for
 set expandtab                   " spaces instead of tabbing
+set nocompatible
 set undofile                    " use an undo-file and give the path where to save
 set undodir=/home/jklee/.vimundo/
 
