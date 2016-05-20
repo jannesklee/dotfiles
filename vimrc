@@ -29,7 +29,6 @@ syntax on                       " enable syntax highlighting
 set background=dark
 colorscheme wombat             " colorscheme
 set number                      " numbers at left
-set relativenumber
 set ruler                       " show cursor line and column in the status line
 set showmatch                   " show matching brackets and change on %
 set magic                       " changes special characters in search patterns (default)
@@ -58,6 +57,7 @@ set nocompatible                " be iMproved, required
 if version >= 703
   set undofile                  " use an undo-file and give the path where to save
   set undodir=$HOME/.vimundo/
+  set relativenumber
 endif
 
 au BufNewFile,BufRead,BufEnter   tex    setlocal spell    spelllang=en_us
