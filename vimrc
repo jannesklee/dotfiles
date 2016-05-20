@@ -35,8 +35,11 @@ set smartindent                 " smart indenting
 set shiftwidth=2                " number of spaces for (auto)indent
 set tabstop=2                   " number of spaces a tab counts for
 set expandtab                   " spaces instead of tabbing
-set undofile                    " use an undo-file and give the path where to save
-set undodir=/home/jklee/.vimundo/
+set nocompatible                " be iMproved, required
+if version >= 703
+  set undofile                  " use an undo-file and give the path where to save
+  set undodir=$HOME/.vimundo/
+endif
 
 " make trailing whitespace annoyingly highlighted
 highlight ExtraWhitespace ctermbg=red guibg=red
