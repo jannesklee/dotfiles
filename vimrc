@@ -26,14 +26,16 @@ filetype plugin indent on       " required
 
 
 syntax on                       " enable syntax highlighting
-"colorscheme wombat              " colorscheme
+set background=dark
+colorscheme wombat             " colorscheme
 set number                      " numbers at left
+set relativenumber
 set ruler                       " show cursor line and column in the status line
 set showmatch                   " show matching brackets and change on %
 set magic                       " changes special characters in search patterns (default)
 set backspace=indent,eol,start  " allow backspacing over everything in insert mode
-"set wildmode=longest,list,full  " bash-like expanding
-"set wildmenu
+set wildmode=longest,list,full  " bash-like expanding
+set wildmenu
 set noesckeys                   " single <Esc> is recognized immediatly
 set smartindent                 " smart indenting
 set shiftwidth=2                " number of spaces for (auto)indent
