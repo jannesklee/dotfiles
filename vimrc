@@ -81,3 +81,7 @@ let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_MultipleCompileFormats='pdf'
 let g:Tex_ViewRule_pdf =  'okular --presentation'
 let g:Tex_BibtexFlavor = 'biber'
+
+" load NERDTree at start
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd p
