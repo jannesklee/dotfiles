@@ -96,3 +96,7 @@ let g:syntastic_check_on_wq = 0
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+
+" load NERDTree at start
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd p
