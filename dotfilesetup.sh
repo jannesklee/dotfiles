@@ -1,6 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # -------------------------------------------------------------------------- #
-# .make.sh                                                                   #
 # This script creates symlinks from the home directory to any desired        #
 # dotfiles in ~/dotfiles                                                     #
 # -------------------------------------------------------------------------- #
@@ -8,12 +7,12 @@
 # variables
 dir=~/dotfiles                  # dotfiles directory
 olddir=~/dotfiles_old           # old dotfiles backup directory
-files="vimrc"                   # list of files/folders to symlink in homedir
+files=("vimrc" "vim/colors" "vim/spell") # list of files/folders to symlink in homedir
 vundledir=~/.vim/bundle/Vundle.vim # Vundle directory
 
 
-
-# create dotfiles_old in homedir echo -n "Creating $olddir for backup of any existing dotfiles in ~ ..."
+# create dotfiles_old in homedir
+echo -n "Creating $olddir for backup of any existing dotfiles in ~ ..."
 mkdir -p $olddir
 echo "done"
 # change to the dotfiles directory
@@ -33,11 +32,27 @@ fi
 # move any existing dotfiles in homedir to dotfiles_old directory,
 # then create symlinks from the homedir to any files in the ~/dotfiles
 # directory specified in $files
-for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/.$file ~/dotfiles_old/
-    echo "Creating symlink to $file in home directory."
+for file in ${files[@]}; do
+    # check if the old files are already set links or normal files
+    if [ -L ~/.$file ]; then
+      echo "$file is a link:"
+      read -p "Sure you want to overwrite symlink? " -n 1 -r
+      if [[ $REPLY =~ ^[Yy]$ ]]; then
+        rm ~/.$file
+      else
+        echo "Please check your symlinks than rerun the script."
+        exit 1
+      fi
+    elif [ -f ~/.$file ]; then
+      echo "$file is a normal file:"
+      echo -n "move the file to $olddir ..."
+      mv ~/.$file ~/dotfiles_old/$file
+      echo "done"
+    fi
+
+    echo -en "\nCreating symlink to $file in home directory ..."
     ln -s $dir/$file ~/.$file
+    echo "done"
 done
 
 # install Vundle plugins declared in vimrc
