@@ -17,6 +17,8 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'tpope/vim-fugitive'     " a Git wrapper so awesome, it should be illegal
 Plugin 'scrooloose/syntastic'   " Syntax checking hacks for vim
 Plugin 'bling/vim-airline'      " lean & mean status/tabline for vim that's light as air
+Plugin 'uguu-org/vim-matrix-screensaver' " matrix screensaver
+Plugin 'davidhalter/jedi-vim'   " autocompletion for python
 " --------------------------------------------------------------------------------------- "
 
 
@@ -27,7 +29,7 @@ filetype plugin indent on       " required
 
 syntax on                       " enable syntax highlighting
 set background=dark
-colorscheme wombat             " colorscheme
+colorscheme wombat              " colorscheme
 set number                      " numbers at left
 set relativenumber
 set ruler                       " show cursor line and column in the status line
@@ -79,3 +81,18 @@ let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_MultipleCompileFormats='pdf'
 let g:Tex_ViewRule_pdf =  'okular --presentation'
 let g:Tex_BibtexFlavor = 'biber'
+
+" syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" show buffers as tabs (uses airline)
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
