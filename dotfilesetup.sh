@@ -43,10 +43,11 @@ for file in ${files[@]}; do
         echo "Please check your symlinks than rerun the script."
         exit 1
       fi
-    elif [ -f ~/.$file ]; then
+    elif [ -f ~/.$file ] || [ -d ~/.$file ]; then
       echo "$file is a normal file:"
       echo -n "move the file to $olddir ..."
-      mv ~/.$file ~/dotfiles_old/$file
+      mkdir -p $olddir/$file
+      mv ~/.$file $olddir/$file
       echo "done"
     fi
 
