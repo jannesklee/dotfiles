@@ -19,6 +19,7 @@ Plugin 'scrooloose/syntastic'   " Syntax checking hacks for vim
 Plugin 'bling/vim-airline'      " lean & mean status/tabline for vim that's light as air
 Plugin 'uguu-org/vim-matrix-screensaver' " matrix screensaver
 Plugin 'davidhalter/jedi-vim'   " autocompletion for python
+Plugin 'ctrlpvim/ctrlp.vim'     " handle buffers nicely
 " --------------------------------------------------------------------------------------- "
 
 
@@ -98,5 +99,5 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 " load NERDTree at start
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
+" autocmd VimEnter * NERDTree
+" autocmd VimEnter * wincmd p
