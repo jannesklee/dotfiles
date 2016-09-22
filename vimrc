@@ -19,6 +19,7 @@ Plugin 'scrooloose/syntastic'   " Syntax checking hacks for vim
 Plugin 'bling/vim-airline'      " lean & mean status/tabline for vim that's light as air
 Plugin 'uguu-org/vim-matrix-screensaver' " matrix screensaver
 Plugin 'davidhalter/jedi-vim'   " autocompletion for python
+Plugin 'bronson/vim-trailing-whitespace' " highlights trailing whitspaces red
 " --------------------------------------------------------------------------------------- "
 
 
@@ -31,7 +32,7 @@ syntax on                       " enable syntax highlighting
 set background=dark
 colorscheme wombat              " colorscheme
 set number                      " numbers at left
-set relativenumber
+"set relativenumber
 set ruler                       " show cursor line and column in the status line
 set showmatch                   " show matching brackets and change on %
 set magic                       " changes special characters in search patterns (default)
@@ -63,16 +64,16 @@ set undodir=/home/jklee/.vimundo/
 au BufNewFile,BufRead,BufEnter   tex    setlocal spell    spelllang=en_us
 
 " make trailing whitespace annoyingly highlighted
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-                                " show trailing whitespaces when entering
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-                                " trailing whitespace, except when typing
-                                " at the end of a line
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-                                " show trailing whitespaces when leaving insert mode
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+"highlight ExtraWhitespace ctermbg=red guibg=red
+"match ExtraWhitespace /\s\+$/
+"                                " show trailing whitespaces when entering
+"autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+"                                " trailing whitespace, except when typing
+"                                " at the end of a line
+"autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+"                                " show trailing whitespaces when leaving insert mode
+"autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+"autocmd BufWinLeave * call clearmatches()
 
 " vim-latex files
 let g:tex_flavor='latex'
