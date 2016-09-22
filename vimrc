@@ -20,6 +20,7 @@ Plugin 'bling/vim-airline'      " lean & mean status/tabline for vim that's ligh
 Plugin 'uguu-org/vim-matrix-screensaver' " matrix screensaver
 Plugin 'davidhalter/jedi-vim'   " autocompletion for python
 Plugin 'bronson/vim-trailing-whitespace' " highlights trailing whitspaces red
+Plugin 'ctrlpvim/ctrlp.vim'     " handle buffers nicely
 " --------------------------------------------------------------------------------------- "
 
 
@@ -99,5 +100,5 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 " load NERDTree at start
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
+" autocmd VimEnter * NERDTree
+" autocmd VimEnter * wincmd p
