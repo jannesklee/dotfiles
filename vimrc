@@ -11,16 +11,18 @@ Plugin 'VundleVim/Vundle.vim'   " let Vundle manage Vundle, required
 
 
 " ----------------------- Plugins ------------------------------------------------------- "
-Plugin 'vim-latex/vim-latex'    " plugin for latex environment
+Plugin 'lervag/vimtex'          " plugin for latex environment
 Plugin 'scrooloose/nerdtree'    " a tree explorer plugin for
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'tpope/vim-fugitive'     " a Git wrapper so awesome, it should be illegal
 Plugin 'scrooloose/syntastic'   " Syntax checking hacks for vim
 Plugin 'bling/vim-airline'      " lean & mean status/tabline for vim that's light as air
-Plugin 'uguu-org/vim-matrix-screensaver' " matrix screensaver
-Plugin 'davidhalter/jedi-vim'   " autocompletion for python
 Plugin 'bronson/vim-trailing-whitespace' " highlights trailing whitspaces red
 Plugin 'ctrlpvim/ctrlp.vim'     " handle buffers nicely
+Plugin 'SirVer/ultisnips'       " Track the engine.
+Plugin 'honza/vim-snippets'     " Engine
+Plugin 'majutsushi/tagbar'      " creates tags of functions on a sidebar
+
 " --------------------------------------------------------------------------------------- "
 
 
@@ -58,6 +60,7 @@ vnoremap <Up> gk
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 set expandtab                   " spaces instead of tabbing
+"setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=8
 set nocompatible                " be iMproved, required
 set undofile                    " use an undo-file and give the path where to save
 set undodir=/home/jklee/.vimundo/
@@ -93,12 +96,26 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+"let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+"nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
+
 " show buffers as tabs (uses airline)
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
+" UltiSnips Configuration
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
 " load NERDTree at start
 " autocmd VimEnter * NERDTree
 " autocmd VimEnter * wincmd p
+"
+" vimtex options
+let g:vimtex_view_method = 'zathura'
