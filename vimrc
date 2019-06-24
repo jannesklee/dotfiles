@@ -15,6 +15,7 @@ Plugin 'lervag/vimtex'          " plugin for latex environment
 Plugin 'scrooloose/nerdtree'    " a tree explorer plugin for
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'tpope/vim-fugitive'     " a Git wrapper so awesome, it should be illegal
+Plugin 'Valloric/YouCompleteMe' " completion addon
 Plugin 'scrooloose/syntastic'   " Syntax checking hacks for vim
 Plugin 'bling/vim-airline'      " lean & mean status/tabline for vim that's light as air
 Plugin 'bronson/vim-trailing-whitespace' " highlights trailing whitspaces red
@@ -79,22 +80,18 @@ au BufNewFile,BufRead,BufEnter   tex    setlocal spell    spelllang=en_us
 "autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 "autocmd BufWinLeave * call clearmatches()
 
-" vim-latex files
-let g:tex_flavor='latex'
-let g:Tex_CompileRule_pdf = 'pdflatex --synctex=-1 -src-specials -interaction=nonstopmode -file-line-error-style $*'
-let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_MultipleCompileFormats='pdf'
-let g:Tex_ViewRule_pdf =  'okular --presentation'
-let g:Tex_BibtexFlavor = 'biber'
+" vimtex
+let g:vimtex_view_method = 'zathura'
 
 " syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 
 "let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 "nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
@@ -119,3 +116,13 @@ let g:UltiSnipsEditSplit="vertical"
 "
 " vimtex options
 let g:vimtex_view_method = 'zathura'
+
+" vimtex settings
+if !exists('g:ycm_semantic_triggers')
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
+
+if empty(v:servername) && exists('*remote_startserver')
+  call remote_startserver('VIM')
+endif
