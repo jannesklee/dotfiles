@@ -14,8 +14,8 @@ Plugin 'VundleVim/Vundle.vim'   " let Vundle manage Vundle, required
 Plugin 'lervag/vimtex'          " plugin for latex environment
 Plugin 'scrooloose/nerdtree'    " a tree explorer plugin for
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'Valloric/YouCompleteMe' " Auto completion
 Plugin 'tpope/vim-fugitive'     " a Git wrapper so awesome, it should be illegal
-Plugin 'Valloric/YouCompleteMe' " completion addon
 Plugin 'scrooloose/syntastic'   " Syntax checking hacks for vim
 Plugin 'bling/vim-airline'      " lean & mean status/tabline for vim that's light as air
 Plugin 'bronson/vim-trailing-whitespace' " highlights trailing whitspaces red
@@ -23,6 +23,7 @@ Plugin 'ctrlpvim/ctrlp.vim'     " handle buffers nicely
 Plugin 'SirVer/ultisnips'       " Track the engine.
 Plugin 'honza/vim-snippets'     " Engine
 Plugin 'majutsushi/tagbar'      " creates tags of functions on a sidebar
+Plugin 'junegunn/vim-easy-align' " aligns tables etc.
 
 " --------------------------------------------------------------------------------------- "
 
@@ -80,9 +81,6 @@ au BufNewFile,BufRead,BufEnter   tex    setlocal spell    spelllang=en_us
 "autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 "autocmd BufWinLeave * call clearmatches()
 
-" vimtex
-let g:vimtex_view_method = 'zathura'
-
 " syntastic settings
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
@@ -93,8 +91,8 @@ let g:vimtex_view_method = 'zathura'
 "let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 
-"let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-"nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 
 " show buffers as tabs (uses airline)
 " Enable the list of buffers
@@ -110,10 +108,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-" load NERDTree at start
-" autocmd VimEnter * NERDTree
-" autocmd VimEnter * wincmd p
-"
 " vimtex options
 let g:vimtex_view_method = 'zathura'
 
@@ -123,6 +117,14 @@ if !exists('g:ycm_semantic_triggers')
 endif
 let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
-if empty(v:servername) && exists('*remote_startserver')
-  call remote_startserver('VIM')
+"if empty(v:servername) && exists('*remote_startserver')
+"  call remote_startserver('VIM')
+"endif
+
+" other colorscheme in vimdiff
+if &diff
+  colorscheme evening
+endif
+if $COLORTERM == 'gnome-terminal'
+  set t_Co=256
 endif
