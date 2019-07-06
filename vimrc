@@ -24,7 +24,8 @@ Plugin 'SirVer/ultisnips'       " Track the engine.
 Plugin 'honza/vim-snippets'     " Engine
 Plugin 'majutsushi/tagbar'      " creates tags of functions on a sidebar
 Plugin 'junegunn/vim-easy-align' " aligns tables etc.
-
+Plugin 'tpope/vim-markdown'     " markdown syntax
+Plugin 'vim-scripts/SyntaxRange' " allows for syntax highlighting in regions
 " --------------------------------------------------------------------------------------- "
 
 
@@ -110,6 +111,9 @@ let g:UltiSnipsEditSplit="vertical"
 
 " vimtex options
 let g:vimtex_view_method = 'zathura'
+
+" copy from multiple terminals
+set clipboard^=unnamed
 
 " vimtex settings
 if !exists('g:ycm_semantic_triggers')
