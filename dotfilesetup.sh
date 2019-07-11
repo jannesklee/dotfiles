@@ -7,7 +7,7 @@
 # variables
 dir=~/dotfiles                  # dotfiles directory
 olddir=~/dotfiles_old           # old dotfiles backup directory
-files=("vimrc" "vim/colors" "vim/spell" "bashrc") # list of files/folders to symlink in homedir
+files=("vimrc" "vim/colors" "vim/spell" "bashrc" "latexmkrc") # list of files/folders to symlink in homedir
 vundledir=~/.vim/bundle/Vundle.vim # Vundle directory
 
 
