@@ -7,7 +7,7 @@
 # variables
 dir=~/dotfiles                  # dotfiles directory
 olddir=~/dotfiles_old           # old dotfiles backup directory
-files=("vimrc" "vim/colors" "vim/spell") # list of files/folders to symlink in homedir
+files=("vimrc" "vim/colors" "vim/spell" "bashrc" "latexmkrc") # list of files/folders to symlink in homedir
 vundledir=~/.vim/bundle/Vundle.vim # Vundle directory
 
 
@@ -59,4 +59,9 @@ done
 # install Vundle plugins declared in vimrc
 echo -n "Install plugins with Vundle ..."
 vim +PluginInstall +qall
+
+# install YouCompleteMe
+cd ~/.vim/bundle/YouCompleteMe
+python3 install.py --clang-completer
+
 echo "done"

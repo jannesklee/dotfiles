@@ -11,16 +11,21 @@ Plugin 'VundleVim/Vundle.vim'   " let Vundle manage Vundle, required
 
 
 " ----------------------- Plugins ------------------------------------------------------- "
-Plugin 'vim-latex/vim-latex'    " plugin for latex environment
+Plugin 'lervag/vimtex'          " plugin for latex environment
 Plugin 'scrooloose/nerdtree'    " a tree explorer plugin for
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'Valloric/YouCompleteMe' " Auto completion
 Plugin 'tpope/vim-fugitive'     " a Git wrapper so awesome, it should be illegal
 Plugin 'scrooloose/syntastic'   " Syntax checking hacks for vim
 Plugin 'bling/vim-airline'      " lean & mean status/tabline for vim that's light as air
-Plugin 'uguu-org/vim-matrix-screensaver' " matrix screensaver
-Plugin 'davidhalter/jedi-vim'   " autocompletion for python
 Plugin 'bronson/vim-trailing-whitespace' " highlights trailing whitspaces red
 Plugin 'ctrlpvim/ctrlp.vim'     " handle buffers nicely
+Plugin 'SirVer/ultisnips'       " Track the engine.
+Plugin 'honza/vim-snippets'     " Engine
+Plugin 'majutsushi/tagbar'      " creates tags of functions on a sidebar
+Plugin 'junegunn/vim-easy-align' " aligns tables etc.
+Plugin 'tpope/vim-markdown'     " markdown syntax
+Plugin 'vim-scripts/SyntaxRange' " allows for syntax highlighting in regions
 " --------------------------------------------------------------------------------------- "
 
 
@@ -58,6 +63,7 @@ vnoremap <Up> gk
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 set expandtab                   " spaces instead of tabbing
+"setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=8
 set nocompatible                " be iMproved, required
 if version >= 703
   set undofile                  " use an undo-file and give the path where to save
@@ -79,22 +85,18 @@ au BufNewFile,BufRead,BufEnter   tex    setlocal spell    spelllang=en_us
 "autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 "autocmd BufWinLeave * call clearmatches()
 
-" vim-latex files
-let g:tex_flavor='latex'
-let g:Tex_CompileRule_pdf = 'pdflatex --synctex=-1 -src-specials -interaction=nonstopmode -file-line-error-style $*'
-let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_MultipleCompileFormats='pdf'
-let g:Tex_ViewRule_pdf =  'okular --presentation'
-let g:Tex_BibtexFlavor = 'biber'
-
 " syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 
 " show buffers as tabs (uses airline)
 " Enable the list of buffers
@@ -106,3 +108,43 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " autocmd VimEnter * NERDTree
 " autocmd VimEnter * wincmd p
 nmap <leader>ne :NERDTree<cr>
+"
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" vimtex options
+let g:vimtex_view_method = 'zathura'
+
+" copy from multiple terminals
+set clipboard^=unnamed
+
+" vimtex settings
+if !exists('g:ycm_semantic_triggers')
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
+
+"if empty(v:servername) && exists('*remote_startserver')
+"  call remote_startserver('VIM')
+"endif
+
+" other colorscheme in vimdiff
+if &diff
+  colorscheme evening
+endif
+if $COLORTERM == 'gnome-terminal'
+  set t_Co=256
+endif
+
+" key to toggle tagbar
+nmap <F8> :TagbarToggle<CR>
