@@ -45,7 +45,6 @@ alias ....='cd ../../..'
 export FOS="/home/jklee/src/fosite/"
 
 #--------------- path extensionsion -------------------------------------------#
-export PATH="/home/jklee/anaconda3/bin:$PATH"
 PATH="`ruby -e 'puts Gem.user_dir'`/bin:$PATH"
 
 #-------------- increase history size -----------------------------------------#
