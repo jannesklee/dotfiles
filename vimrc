@@ -66,6 +66,9 @@ set expandtab                   " spaces instead of tabbing
 "setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=8
 set nocompatible                " be iMproved, required
 if version >= 703
+	if !isdirectory($HOME."/.vimundo")
+	  call mkdir($HOME."/.vimundo", "", 0700)
+	endif
   set undofile                  " use an undo-file and give the path where to save
   set undodir=$HOME/.vimundo/
   set relativenumber
