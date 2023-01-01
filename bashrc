@@ -41,12 +41,6 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-#--------------- custom pathes ------------------------------------------------#
-export FOS="/home/jklee/src/fosite/"
-
-#--------------- path extensionsion -------------------------------------------#
-PATH="`ruby -e 'puts Gem.user_dir'`/bin:$PATH"
-
 #-------------- increase history size -----------------------------------------#
 HISTSIZE=10000
 HISTFILESIZE=50000
