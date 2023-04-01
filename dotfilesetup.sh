@@ -7,7 +7,7 @@
 # variables
 dir=~/src/dotfiles                  # dotfiles directory
 olddir=~/src/dotfiles_old           # old dotfiles backup directory
-files=("vimrc" "vim/colors" "vim/spell" "bashrc" "latexmkrc" "config/i3" "config/i3status.conf) # list of files/folders to symlink in homedir
+files=("vimrc" "vim/colors" "vim/spell" "bashrc" "latexmkrc" "config/i3" "config/i3status.conf") # list of files/folders to symlink in homedir
 
 # create dotfiles_old in homedir
 echo -n "Creating $olddir for backup of any existing dotfiles in ~ ..."
