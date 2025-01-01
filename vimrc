@@ -19,6 +19,7 @@ Plug 'majutsushi/tagbar'      " creates tags of functions on a sidebar
 Plug 'junegunn/vim-easy-align' " aligns tables etc.
 Plug 'tpope/vim-markdown'     " markdown syntax
 Plug 'vim-scripts/SyntaxRange' " allows for syntax highlighting in regions
+Plug 'vim-scripts/Wombat'
 " --------------------------------------------------------------------------------------- "
 call plug#end()
 

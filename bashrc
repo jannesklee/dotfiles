@@ -47,3 +47,5 @@ HISTFILESIZE=50000
 
 #------------- enable vim clientserver by default -----------------------------#
 alias vim='vim --servername vim'
+
+source /usr/share/bash-completion/completions/git
